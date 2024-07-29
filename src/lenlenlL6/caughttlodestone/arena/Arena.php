@@ -53,12 +53,12 @@ class Arena {
         if($this->playerPosition) {
             $pos1 = $this->playerPosition[0];
             $pos2 = $this->playerPosition[1];
-            $config->set("playerPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()])
+            $config->set("playerPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()]);
         }
         if($this->spawnPosition) {
             $pos1 = $this->spawnPosition[0];
             $pos2 = $this->spawnPosition[1];
-            $config->set("spawnPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()])
+            $config->set("spawnPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()]);
         }
         $config->save();
     }
