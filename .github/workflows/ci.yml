@@ -33,5 +33,11 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction
 
+      - name: Download PocketMine-MP phar
+        run: curl -L -o bin/phpstan/pocketmine.phar https://jenkins.pmmp.io/job/PocketMine-MP/lastStableBuild/artifact/PocketMine-MP.phar
+
+      - name: Run PocketMine-MP setup
+        run: php bin/phpstan/pocketmine.phar --no-wizard
+
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyze -l 0 src --no-progress --memory-limit=2G
