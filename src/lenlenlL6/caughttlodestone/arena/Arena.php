@@ -128,6 +128,6 @@ class Arena {
         SB::addEntry($player, "ctl_wait", 0, TextFormat::YELLOW . "Enemy: " . TextFormat::RED . ($player === $this->player1) ? $this->player2->getName() : $this->player1->getName());
         SB::addEntry($player, "ctl_wait", 1, TextFormat::YELLOW . "Map: " . TextFormat::RED . $this->world->getFolderName());
         SB::addEntry($player, "ctl_wait", 2, TextFormat::YELLOW . "Status: " . TextFormat::RED . "WAITING");
-        SB::addEntry($player, "ctl_wait", 3, TextFormat::YELLOW . "Timer: " . TextFormat::RED . $this->getStartTimer()) 
+        SB::addEntry($player, "ctl_wait", 3, TextFormat::YELLOW . "Timer: " . TextFormat::RED . $this->getStartTimer());
     }
 }
