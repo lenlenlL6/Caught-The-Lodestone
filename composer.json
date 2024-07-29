@@ -1,5 +1,5 @@
 {
-    "name": "lenlenlL6/Caught-The-Lodestone",
+    "name": "lenlenll6/caught-the-lodestone",
     "description": "",
     "type": "project",
     "license": "GPL-3.0",
@@ -27,7 +27,7 @@
     },
     "authors": [
         {
-            "name": ["lenlenlL6", "LootSpace369"]
+            "name": "lenlenll6, LootSpace369"
         }
     ],
     "require-dev": {
