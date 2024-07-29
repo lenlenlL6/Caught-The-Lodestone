@@ -5,8 +5,8 @@ namespace lenlenlL6\caughttlodestone\arena;
 use pocketmine\player\Player;
 use pocketmine\world\World;
 use pocketmine\math\Vector3;
+use pocketmine\utils\Config;
 use lenlenlL6\caughttlodestone\Main as CTL;
-
 
 class Arena {
 
@@ -26,18 +26,20 @@ class Arena {
 
     protected int $timer;
 
+    protected ?Config $cfg;
+
     public function __construct(World $world, Player $player1, Player $player2) {
         $this->world = $world;
         $this->player1 = $player1;
         $this->player2 = $player2;
         $this->timer = time();
         $this->readSaveData();
+        $this->cfg = new Config(CTL::getInstance()->getDataFolder() . "arena/" . $this->world->getFolderName() . ".yml", Config::YAML);
     }
 
     protected function readSaveData() : void {
-        $config = new Config(CTL::getInstance()->getDataFolder() . "arena/" . $this->world->getFolderName() . ".yml");
-        $config->reload();
-        $data = $config->getAll();
+        $this->cfg->reload();
+        $data = $this->cfg->getAll();
         if(isset($data["playerPosition"])) {
             $this->playerPosition = $data["playerPosition"];
         }
@@ -47,9 +49,8 @@ class Arena {
     }
 
     public function writeSaveData() : void {
-        $config = new Config(CTL::getInstance()->getDataFolder() . "arena/" . $this->world->getFolderName() . ".yml");
-        $config->reload();
-        $config->set("world", $this->world->getFolderName());
+        $this->cfg->reload();
+        $this->cfg->set("world", $this->world->getFolderName());
         if($this->playerPosition) {
             $pos1 = $this->playerPosition[0];
             $pos2 = $this->playerPosition[1];
@@ -60,7 +61,7 @@ class Arena {
             $pos2 = $this->spawnPosition[1];
             $config->set("spawnPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()]);
         }
-        $config->save();
+        $this->cfg->save();
     }
 
     public function onUpdate() : void {
