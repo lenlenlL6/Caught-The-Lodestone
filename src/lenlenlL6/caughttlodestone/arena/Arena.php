@@ -14,6 +14,8 @@ class Arena {
 
     protected World $world;
 
+    protected ?array $region;
+
     protected Player $player1;
 
     protected Player $player2;
@@ -78,6 +80,10 @@ class Arena {
 
     public function getWorld() : World {
         return $this->world;
+    }
+
+    public function getRegion(): array {
+        return $this->region;
     }
 
     public function getPlayerPosition() : ?array {
