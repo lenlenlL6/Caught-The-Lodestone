@@ -7,6 +7,7 @@ use pocketmine\world\World;
 use pocketmine\math\Vector3;
 use pocketmine\utils\Config;
 use lenlenlL6\caughttlodestone\Main as CTL;
+use lenlenlL6\caughttlodestone\Scoreboard as SB;
 
 class Arena {
 
@@ -26,13 +27,12 @@ class Arena {
 
     protected int $timer;
 
-    protected ?Config $cfg;
-
     public function __construct(World $world, Player $player1, Player $player2) {
         $this->world = $world;
         $this->player1 = $player1;
         $this->player2 = $player2;
         $this->timer = time();
+        $this->startTimer = time();
         $this->readSaveData();
         $this->cfg = new Config(CTL::getInstance()->getDataFolder() . "arena/" . $this->world->getFolderName() . ".yml", Config::YAML);
     }
@@ -67,6 +67,14 @@ class Arena {
     public function onUpdate() : void {
         if(!$this->player1->isOnline() or !$this->player2->isOnline()) {
             $this->status = 2;
+            return;
+        }
+        if($this->status === 0) {
+            $this->showWaitScoreboard($this->player1);
+            $this->showWaitScoreboard($this->player2);
+            if($this->getStartTimer() > 5) {
+                $this->status = 1;
+            }
             return;
         }
     }
@@ -107,7 +115,19 @@ class Arena {
         return time() - $this->timer;
     }
 
+    public function getStartTimer() : int {
+        return time() - $this->timer;
+    }
+
     public function isReady() : bool {
         return $this->playerPosition and $this->spawnArea;
+    }
+
+    protected function showWaitScoreboard(Player $player) : void {
+        SB::create($player, "ctl_wait", TextFormat::BOLD . TextFormat::YELLOW . "CAUGHT THE LODESTONE");
+        SB::addEntry($player, "ctl_wait", 0, TextFormat::YELLOW . "Enemy: " . TextFormat::RED . ($player === $this->player1) ? $this->player2->getName() : $this->player1->getName());
+        SB::addEntry($player, "ctl_wait", 1, TextFormat::YELLOW . "Map: " . TextFormat::RED . $this->world->getFolderName());
+        SB::addEntry($player, "ctl_wait", 2, TextFormat::YELLOW . "Status: " . TextFormat::RED . "WAITING");
+        SB::addEntry($player, "ctl_wait", 3, TextFormat::YELLOW . "Timer: " . TextFormat::RED . $this->getStartTimer()) 
     }
 }
