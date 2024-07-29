@@ -9,8 +9,12 @@ use pocketmine\utils\SingletonTrait;
 class Main extends PluginBase {
 
     use SingletonTrait;
+
+    public function onLoad(): void{
+        self::setInstance($this);
+    }
     
     public function onEnable() : void {
-        
+        @mkdir($this->getDataFolder() ."arena");
     }
 }
