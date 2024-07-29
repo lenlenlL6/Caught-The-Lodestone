@@ -56,7 +56,7 @@ class Arena {
             $pos2 = $this->playerPosition[1];
             $this->cfg->set("playerPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()]);
         }
-        if($this->spawnPosition) {
+        if($this->spawnArea) {
             $pos1 = $this->spawnArea[0];
             $pos2 = $this->spawnArea[1];
             $this->cfg->set("spawnPosition", [$pos1->getX() . ":" . $pos1->getY() . ":" . $pos1->getZ(), $pos2->getX() . ":" . $pos2->getY() . ":" . $pos2->getX()]);
