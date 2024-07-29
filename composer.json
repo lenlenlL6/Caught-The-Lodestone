@@ -2,7 +2,7 @@
     "name": "lenlenll6/caught-the-lodestone",
     "description": "",
     "type": "plugin",
-    "license": "GPL-3.0",
+    "license": "Apache-2.0 license",
     "require": {
         "php": "^8.1",
         "php-64bit": "*",
