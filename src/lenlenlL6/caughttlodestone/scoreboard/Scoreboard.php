@@ -1,6 +1,6 @@
 <?php
 
-namespace lenlenlL6\twovstwo\scoreboard;
+namespace lenlenlL6\caughttlodestone\scoreboard;
 
 use pocketmine\player\Player;
 use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
