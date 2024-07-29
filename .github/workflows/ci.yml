@@ -34,7 +34,7 @@ jobs:
         run: composer install --prefer-dist --no-interaction
 
       - name: Install pmmpthread extension
-        run: sudo apt-get install -y php-pmmpthread 
+        run: composer install --ignore-platform-req=ext-pmmpthread
 
       - name: Create directory for PHPStan
         run: mkdir -p bin/phpstan
