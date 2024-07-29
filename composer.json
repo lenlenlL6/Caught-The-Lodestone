@@ -1,5 +1,5 @@
 {
-    "name": "lenlenlL6/caught-the-lodestone",
+    "name": "lenlenl6/caught-the-lodestone",
     "description": "",
     "type": "project",
     "license": "Apache-2.0 license",
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "lenlenlL6\\caughtthelodeone\\": "src/"
+            "lenlenl6\\caughtthelodestone\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "lenlenlL6"
+            "name": "lenlenl6"
         },
         {
             "name": "LootSpace369"
