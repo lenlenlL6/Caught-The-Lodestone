@@ -33,6 +33,9 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction
 
+      - name: Create directory for PHPStan
+        run: mkdir -p bin/phpstan
+
       - name: Download PocketMine-MP phar
         run: curl -L -o bin/phpstan/pocketmine.phar https://jenkins.pmmp.io/job/PocketMine-MP/lastStableBuild/artifact/PocketMine-MP.phar
 
