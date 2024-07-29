@@ -1,32 +1,34 @@
 {
-    "name": "lenlenll6/caught-the-lodestone",
+    "name": "lenlenlL6/Caught-The-Lodestone",
     "description": "",
-    "type": "plugin",
+    "type": "project",
     "license": "Apache-2.0 license",
     "require": {
         "php": "^8.1",
-        "php-64bit": "*",
         "ext-igbinary": "^3.0.1",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "ext-morton": "^0.1.0",
         "ext-openssl": "*",
         "ext-pcre": "*",
         "ext-phar": "*",
-        "ext-pthreads": "^4.0",
-        "ext-reflection": "*",
         "ext-sockets": "*",
         "ext-spl": "*",
         "ext-yaml": ">=2.0.0",
         "ext-zip": "*",
-        "ext-zlib": ">=1.2.11"
+        "ext-zlib": ">=1.2.11",
+        "pocketmine/pocketmine-mp": "^5.0.0"
     },
     "autoload": {
-        "classmap": ["src"]
+        "psr-4": {
+            "lenlenlL6\\caughttlodestone\\": "src/"
+        }
     },
     "authors": [
         {
-            "name": "lenlenll6, LootSpace369"
+            "name": "lenlenlL6"
+        },
+        {
+            "name": "LootSpace369"
         }
     ],
     "require-dev": {
