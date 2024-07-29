@@ -22,7 +22,7 @@ class Arena {
 
     protected ?array $playerPosition;
 
-    protected ?array $spawnPosition;
+    protected ?array $spawnArea;
 
     protected int $timer;
 
@@ -44,7 +44,7 @@ class Arena {
             $this->playerPosition = $data["playerPosition"];
         }
         if(isset($data["spawnPosition"])) {
-            $this->spawnPosition = $data["spawnPosition"];
+            $this->spawnArea = $data["spawnPosition"];
         }
     }
 
