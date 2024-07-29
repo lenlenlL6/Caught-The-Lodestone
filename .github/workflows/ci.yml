@@ -20,6 +20,19 @@ jobs:
           install-path: "./bin"
           pm-version-major: 4
 
+      - name: Restore Composer package cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/composer/files
+            ~/.cache/composer/vcs
+          key: "composer-v2-cache-${{ inputs.php }}-${{ hashFiles('./composer.lock') }}"
+          restore-keys: |
+            composer-v2-cache-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction --ignore-platform-req=ext-pmmpthread
+
       - name: Create directory for PHPStan
         run: mkdir -p bin/phpstan
 
@@ -28,19 +41,6 @@ jobs:
 
       - name: Run PocketMine-MP setup
         run: php bin/phpstan/pocketmine.phar --no-wizard
-
-      - name: Restore Composer package cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/composer/files
-            ~/.cache/composer/vcs
-          key: "composer-v2-cache-${{ hashFiles('**/composer.lock') }}"
-          restore-keys: |
-            composer-v2-cache-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyze -l 0 src --no-progress --memory-limit=2G
