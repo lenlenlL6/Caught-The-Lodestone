@@ -3,6 +3,7 @@
 namespace lenlenlL6\caughttlodestone\task;
 
 use pocketmine\scheduler\AsyncTask;
+use pocketmine\player\Player;
 use lenlenlL6\caughttlodestone\Main as CTL;
 
 class QueueTask extends AsyncTask {
